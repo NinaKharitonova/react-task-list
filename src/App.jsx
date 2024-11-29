@@ -76,25 +76,49 @@ function App() {
   ];
   console.log(tasks);
 
-  const backlogAndInProgres = () => {
-    return tasks.filter(
-      (task) => task.state === "backlog" || task.state === "in_progress"
-    );
-  };
+  const backlogAndInProgres = tasks.filter(
+    (task) => task.state === "backlog" || task.state === "in_progress"
+  );
 
-  const completedTasks = () => {
-    return tasks.filter((task) => task.state === "completed");
-  };
+  const completedTasks = tasks.filter((task) => task.state === "completed");
+
+  function printTasks(tasks) {
+    return (
+      <ul>
+        {tasks.map((task) => (
+          <li key={task.id}>
+            <h3>
+              {task.title}
+              <span className="state">{task.state}</span>
+            </h3>
+            <div>Proprity:{task.priority}</div>
+            <div>Est. time: {task.estimatedTime}</div>
+          </li>
+        ))}
+      </ul>
+    );
+  }
 
   return (
     <>
-      <h1>Task Manager</h1>
-
-      <h2>In Progress / Backlog</h2>
-      <ul key={backlogAndInProgres}></ul>
-
-      <h2>Completed</h2>
-      <ul key={completedTasks}></ul>
+      <header>
+        <div className="container">
+          <h1>Task Manager</h1>
+        </div>
+      </header>
+      <main>
+        <div className="container">
+          <section>
+            <h2>In Progress / Backlog ({backlogAndInProgres.length})</h2>
+            {printTasks(backlogAndInProgres)}
+          </section>
+          <hr />
+          <section>
+            <h2>Completed ({completedTasks.length})</h2>
+            {printTasks(completedTasks)}
+          </section>
+        </div>
+      </main>
     </>
   );
 }

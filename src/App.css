@@ -1,0 +1,29 @@
+header {
+  padding: 2rem;
+  background-color: rgb(93, 220, 178);
+}
+
+section {
+  margin: 1rem 0;
+  padding: 2rem 0;
+}
+
+section:last-child {
+  border-bottom: none;
+}
+
+h2 {
+  margin-bottom: 2rem;
+}
+
+li {
+  margin-bottom: 2rem;
+}
+
+.state {
+  display: inline-block;
+  font-size: 1rem;
+  padding: 0.4rem 1rem;
+  background-color: orange;
+  margin-left: 0.4rem;
+}
